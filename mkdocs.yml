@@ -2,8 +2,8 @@ site_name: Abhakliste
 site_description: "Running multiple assertion tests one after another."
 copyright: Made with ❤️ by An Hoang
 use_directory_urls: false
-# repo_url: "{{ git_repository }}"
-# repo_name: [Optional Repo Name]
+repo_url: https://github.com/AnH0ang/abhakliste
+repo_name: AnH0ang/abhakliste
 
 theme:
   name: material
