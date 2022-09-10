@@ -1,49 +1,48 @@
 # Abhakliste
 
-## 📝 Description
+Abhakliste is a minimal task runner that prints a list of tasks and their status.
+It runs a collection of dependent task which can be shell commands or python functions in sequence
+and checks for error. Even if one task fails, it continues to run the rest of the tasks.
+The goal of this project is to provide a minimal task runner with a low overhead API.
 
-A brief description of what this project does and who it's for
-
-## ☎️ Contact
-
-| Name            | Mail                         | Role                  |
-| --------------- | ---------------------------- | --------------------- |
-| John Doe        | john@doe.com                 | Developer             |
+![Screenshot](./docs/assets/screenshot.png)
 
 ## ⚙️ Installation
 
-Install my-project with npm
+Install the project with `pip`
 
 ```bash
-  npm install my-project
-  cd my-project
+pip install abhakliste
 ```
 
 ## 🎨 Features
 
-- Light/dark mode toggle
-- Live previews
-- Fullscreen mode
-- Cross platform
+- Low Overhead Task Runner
+- Visual summary of task results
+- Written in pure python (no modules)
+- Supports Python 3.8+
 
 ## 💡 Usage Examples
 
-```javascript
-import Component from 'my-project'
+```python
+import subprocess
+from abhakliste import Abhakliste
 
-function App() {
-  return <Component />
-}
+# set up runner
+abhaker = Abhakliste()
+
+# run code context
+with abhaker.run_context(desc="Run ls"):
+  subprocess.check_output("ls")
+
+# run cli command
+abhaker.run_cmd("ls", desc="Run ls")
+
+# run function
+def run_ls():
+  subprocess.check_output("ls")
+abhaker.run_func(run_ls, desc="Run ls")
+
+# raise an error if a run failed
+abhaker.raise_on_error()
 ```
-
-## 💡 Contributing
-
-Contributions are always welcome!
-
-See me`contributing.md` for ways to get started.
-
-Please adhere to this project's `code of conduct`.
-
-## 📖 Documentation
-
-[Documentation](https://linktodocumentation)
