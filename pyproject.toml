@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "abhakliste"
-version = "0.0.0"
+version = "0.1.0"
 description = "Running multiple assertion tests one after another."
 authors = ["An Hoang <anhoang31415@gmail.com>"]
 readme = "README.md"
@@ -68,5 +68,5 @@ ignore_missing_imports = true
 testpaths = ["src/tests"]
 
 [tool.commitizen]
-version = "0.0.0"
+version = "0.1.0"
 version_files = ["src/abhakliste/__init__.py", "pyproject.toml:version"]
