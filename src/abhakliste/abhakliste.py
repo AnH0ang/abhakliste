@@ -150,9 +150,9 @@ class Abhakliste:
 
     def run_cmd(
         self,
-        args: Union[str, List[str]],
+        args: Union[str, List[Any]],
         desc: str,
-        shell: bool,
+        shell: bool = False,
         cwd: Optional[str] = None,
         text: Optional[Any] = None,
         **kwargs: Any,
