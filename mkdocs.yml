@@ -1,0 +1,84 @@
+site_name: Abhakliste
+site_description: "Running multiple assertion tests one after another."
+copyright: Made with ❤️ by An Hoang
+use_directory_urls: false
+# repo_url: "{{ git_repository }}"
+# repo_name: [Optional Repo Name]
+
+theme:
+  name: material
+  # favicon: assets/favicon.png
+  # logo: assets/logo.png
+  palette:
+    - schema: default
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+  icon:
+    repo: fontawesome/brands/git-alt
+  features:
+    - search.highlight
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - content.code.annotate
+    - toc.integrate
+    - navigation.top
+
+extra_css:
+  - assets/css/style.css
+  - assets/css/mkdocstrings.css
+
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/AnHo4ng
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/anh0ang
+
+markdown_extensions:
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.details
+  - pymdownx.emoji
+  - pymdownx.magiclink
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist
+
+extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+plugins:
+  - search
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          selection:
+            docstring_style: google
+            docstring_options:
+              ignore_init_summary: yes
+          rendering:
+            merge_init_into_class: false
+            show_source: true
+            show_root_heading: false
+            show_root_toc_entry: false
+            # show_if_no_docstring: true
+      watch:
+        - src
+nav:
+  - Home: home.md
+  - Usage: usage.md
+  - Code Reference: code_reference.md
+  - Developement: developement.md
