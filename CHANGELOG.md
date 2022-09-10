@@ -1,7 +1,8 @@
-## Unreleased
+## 0.1.2 (2022-09-10)
 
 ### Fix
 
+- **abhakliste**: Set default value of `shell` to True
 - **actions**: Fix typo
 
 ## 0.1.1 (2022-09-10)
