@@ -12,6 +12,7 @@ on:
       - "**"
 jobs:
   lint:
+    if: "!startswith(github.event.head_commit.message, 'bump:') || !startswith(github.event.head_commit.message, 'Bump')"
     name: Linting
     runs-on: ubuntu-latest
     steps:
@@ -23,6 +24,7 @@ jobs:
       - uses: pre-commit/action@v3.0.0
 
   test:
+    if: "!startswith(github.event.head_commit.message, 'bump:') || !startswith(github.event.head_commit.message, 'Bump')"
     name: Testing
     needs: lint
     strategy:
