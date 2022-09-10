@@ -12,6 +12,7 @@ on:
       - "**"
 jobs:
   lint:
+    if: "!startswith(github.event.head_commit.message, 'bump:') || !startswith(github.event.head_commit.message, 'Bump')"
     name: Linting
     runs-on: ubuntu-latest
     steps:
@@ -23,6 +24,7 @@ jobs:
       - uses: pre-commit/action@v3.0.0
 
   test:
+    if: "!startswith(github.event.head_commit.message, 'bump:') || !startswith(github.event.head_commit.message, 'Bump')"
     name: Testing
     needs: lint
     strategy:
@@ -61,4 +63,9 @@ jobs:
         run: poetry install --no-interaction
 
       - name: Test with pytest
-        run: poetry run pytest
+        run: poetry run pytest --cov src/abhakliste --cov-report xml:coverage.xml
+
+      - uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+          files: ./coverage.xml

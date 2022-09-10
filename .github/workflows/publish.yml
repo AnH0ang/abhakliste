@@ -1,4 +1,4 @@
-name: Pushblish Package
+name: Publish Package
 
 on:
   push:
