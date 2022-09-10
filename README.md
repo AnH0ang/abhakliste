@@ -46,3 +46,7 @@ abhaker.run_func(run_ls, desc="Run ls")
 # raise an error if a run failed
 abhaker.raise_on_error()
 ```
+
+## 📜 Documentation
+
+For further examples on how to use the modules and a detailed API reference, see the [documentation](https://anh0ang.github.io/abhakliste/).
