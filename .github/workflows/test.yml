@@ -63,4 +63,15 @@ jobs:
         run: poetry install --no-interaction
 
       - name: Test with pytest
-        run: poetry run pytest
+        run: poetry run pytest --cov src/abhakliste --cov-report xml:coverage.xml
+
+      - name: Upload coverage reports to Codecov
+        run: |
+          curl -Os https://uploader.codecov.io/latest/linux/codecov
+          chmod +x codecov
+          ./codecov -t ${CODECOV_TOKEN}
+
+      - uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+          files: ./coverage.xml
