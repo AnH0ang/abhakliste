@@ -1,11 +1,8 @@
 name: Deploy to GitHub Pages
 on:
   push:
-    paths-ignore:
-      - docs/**
-    branches:
-      - master
-      - main
+    tags:
+      - "*"
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -38,12 +35,10 @@ jobs:
       - name: Install library
         run: poetry install --no-interaction
 
-      - name: Build documentation
+      - name: Configure Git User
         run: |
-          make build_html_docs
+          git config user.name github-actions
+          git config user.email github-actions@github.com
 
-      - name: Deploy documentation
-        uses: JamesIves/github-pages-deploy-action@4.1.4
-        with:
-          branch: gh-pages
-          folder: docs/build/html
+      - name: Deploy Documentation to gh pages
+        run: mkdocs gh-deploy --force
