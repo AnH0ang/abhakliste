@@ -6,7 +6,8 @@ docstring-convention = google
 # * W503: black compatibility
 # * D104,D100: ignore missing docstring in on package/module level
 # * F401: ignore unused imports in __init__ file
-ignore = W503,D104,D100,DAR101
+ignore = W503,D104,D100,DAR101,D107
 per-file-ignores =
     __init__.py: F401
+    test*: DAR401
 docstring_style=google
