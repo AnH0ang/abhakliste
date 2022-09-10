@@ -31,30 +31,3 @@ test:
 lint:
 	git add --intent-to-add .
 	$(VENV)/pre-commit run --all-files
-
-#################################################################################
-# SETUP
-#################################################################################
-
-.PHONY: install
-install: install_tools install_dependencies install_precommit
-	@echo "Initilize direnv..."
-	direnv allow
-
-.PHONY: install_tools
-install_tools:
-	@echo "Install dev tools..."
-	git init -q
-	@sh ./scripts/install_tools.sh
-
-.PHONY: install_dependencies
-install_dependencies: install_tools
-	@echo "Install dependencies..."
-	@sh ./scripts/install_dependencies.sh
-
-.PHONY: install_precommit
-install_precommit:
-	@echo "Install pre-commit hooks..."
-	git init -q
-	$(VENV)/pre-commit install
-	$(VENV)/pre-commit install-hooks
